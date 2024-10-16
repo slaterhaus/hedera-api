@@ -1,0 +1,35 @@
+{
+  "name": "hedera-api",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "includedScripts": [],
+  "sourceRoot": "src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "hedera-api:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hedera-api:build:development"
+        },
+        "production": {
+          "buildTarget": "hedera-api:build:production"
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": [
+        "build"
+      ],
+      "command": "docker build -f Dockerfile . -t hedera-api"
+    }
+  }
+}
