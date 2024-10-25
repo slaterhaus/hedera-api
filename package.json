@@ -9,10 +9,12 @@
   },
   "private": true,
   "dependencies": {
+    "@hashgraph/sdk": "^2.52.0",
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
     "axios": "^1.6.0",
+    "dotenv": "^16.4.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0"
   },
