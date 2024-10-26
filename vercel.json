@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "nx build",
+  "installCommand": "npm install",
   "builds": [
     {
       "src": "dist/main.js",
