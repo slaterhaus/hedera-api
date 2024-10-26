@@ -14,7 +14,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'https://hedera-api-slaterhaus-slaterhaus-projects.vercel.app', // Server
+      'https://hedera-api-seven.vercel.app', // Production server
+      /https:\/\/hedera-\w*-slaterhaus-projects.vercel.app/, // Preview server
       'https://slaterhaus.github.io/', // Client
       'http://localhost:3000',
     ],
