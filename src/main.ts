@@ -15,6 +15,14 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix, {
     exclude: ["/"]
   });
+  app.enableCors({
+    origin: [
+      'http://localhost:3000',
+      '/^https:\\/\\/hedera.*\\.vercel\\.app$/'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    credentials: true
+  });
   const port = process.env.PORT || 3000;
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
