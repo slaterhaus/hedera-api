@@ -21,7 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Clear Nx cache
+        run: npx nx reset
+
       - run: npx nx build
+        env:
+          NX_VERBOSE_LOGGING: true  # This helps debug cache issues
 
       # Cache node_modules
       - uses: actions/setup-node@v4
