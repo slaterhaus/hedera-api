@@ -1,7 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
 import { configDotenv } from 'dotenv';
 
 configDotenv()
@@ -15,11 +11,18 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix, {
     exclude: ["/"]
   });
+
   app.enableCors({
     origin: [
-      '*'
+      'https://hedera-api-slaterhaus-slaterhaus-projects.vercel.app', // Server
+      'https://slaterhaus.github.io/', // Client
+      'http://localhost:3000',
     ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
   });
+
   const port = process.env.PORT || 3000;
   await app.listen(port);
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
