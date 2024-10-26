@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "nx build",
-  "installCommand": "npm install",
   "builds": [
     {
       "src": "dist/main.js",
@@ -12,7 +10,7 @@
     {
       "src": "/(.*)",
       "dest": "dist/main.js",
-      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
     }
   ]
 }
