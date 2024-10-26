@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - run: npx nx run-many --target=build --all
+      - run: npx nx build
 
       # Cache node_modules
       - uses: actions/setup-node@v4
