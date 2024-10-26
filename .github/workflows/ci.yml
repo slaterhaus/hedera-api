@@ -28,6 +28,9 @@ jobs:
         env:
           NX_VERBOSE_LOGGING: true  # This helps debug cache issues
 
+      - name: List dist directory
+        run: ls -la dist/hedera-api
+
       # Cache node_modules
       - uses: actions/setup-node@v4
         with:
@@ -36,6 +39,7 @@ jobs:
 
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
+
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
