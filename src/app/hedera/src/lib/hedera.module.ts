@@ -5,6 +5,8 @@ import { Client, AccountId, PrivateKey } from '@hashgraph/sdk';
 import { HederaSecurityProvider } from './providers/hedera-security/hedera-security';
 import { HederaHealthController } from './health/health.controller';
 import { HealthcheckService } from './health/healthcheck.service';
+import { TopicController } from './topic/topic.controller';
+import { TopicService } from './topic/topic.service';
 
 type Network = { [key: string]: string | AccountId };
 export interface HederaConfig {
@@ -14,8 +16,8 @@ export interface HederaConfig {
 }
 
 @Module({
-  controllers: [HederaController, HederaHealthController],
-  providers: [HederaService, HealthcheckService, HederaSecurityProvider],
+  controllers: [HederaController, HederaHealthController, TopicController],
+  providers: [HederaService, TopicService, HealthcheckService, HederaSecurityProvider],
   exports: [HederaService],
 })
 export class HederaModule {
