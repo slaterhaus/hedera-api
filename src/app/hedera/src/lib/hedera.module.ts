@@ -7,6 +7,8 @@ import { HederaHealthController } from './health/health.controller';
 import { HealthcheckService } from './health/healthcheck.service';
 import { TopicController } from './topic/topic.controller';
 import { TopicService } from './topic/topic.service';
+import { FileUploadService } from './file-upload/file-upload.service';
+import { FileUploadController } from './file-upload/file-upload.controller';
 
 type Network = { [key: string]: string | AccountId };
 export interface HederaConfig {
@@ -16,8 +18,19 @@ export interface HederaConfig {
 }
 
 @Module({
-  controllers: [HederaController, HederaHealthController, TopicController],
-  providers: [HederaService, TopicService, HealthcheckService, HederaSecurityProvider],
+  controllers: [
+    HederaController,
+    HederaHealthController,
+    TopicController,
+    FileUploadController,
+  ],
+  providers: [
+    HederaService,
+    TopicService,
+    HealthcheckService,
+    HederaSecurityProvider,
+    FileUploadService,
+  ],
   exports: [HederaService],
 })
 export class HederaModule {

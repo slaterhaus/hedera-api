@@ -1,11 +1,15 @@
-import { Controller, Get, Inject, Param } from '@nestjs/common';
-import { Client, TopicId, TopicInfoQuery } from '@hashgraph/sdk';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
+import { Client, TopicId, TopicInfoQuery, TopicMessageQuery } from '@hashgraph/sdk';
+import { CreateChildTopicDto, TopicResponseDto } from '../types';
+import { TopicService } from './topic.service';
+import { TransactionReceiptJSON } from '@hashgraph/sdk/lib/transaction/TransactionReceipt';
 
-@Controller('topic')
+@Controller('topics')
 export class TopicController {
   constructor(
     @Inject('HEDERA_CLIENT')
-    private readonly client: Client
+    private readonly client: Client,
+    private readonly topicService: TopicService
   ) {}
 
   @Get('create-master-topic')
@@ -13,7 +17,7 @@ export class TopicController {
     // return this.topicService.createMasterTopic();
   }
 
-  @Get(':topicId')
+  @Get('topic/:topicId')
   async getTopicById(@Param('topicId') topicId: TopicId) {
     try {
       return await new TopicInfoQuery()
@@ -22,6 +26,19 @@ export class TopicController {
     } catch (e) {
       return e;
     }
+  }
+  @Get('children')
+  async getChildTopics() {
+    // return await this.topicService.getChildTopics();
+    // return {'hey': 'hey'}
+    return await this.topicService.getChildTopics();
+  }
+
+  @Post('child')
+  async createChildTopic(
+    @Body() createTopicDto: CreateChildTopicDto
+  ): Promise<TransactionReceiptJSON> {
+    return this.topicService.createChildTopic(createTopicDto.memo)
   }
 }
 
