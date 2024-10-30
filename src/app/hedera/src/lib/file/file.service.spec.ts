@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FileUploadService } from './file-upload.service';
+import { FileUploadService } from './file.service';
 
-describe('FileUploadService', () => {
+describe('FileService', () => {
   let service: FileUploadService;
 
   beforeEach(async () => {

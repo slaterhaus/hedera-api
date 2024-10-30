@@ -7,8 +7,9 @@ import { HederaHealthController } from './health/health.controller';
 import { HealthcheckService } from './health/healthcheck.service';
 import { TopicController } from './topic/topic.controller';
 import { TopicService } from './topic/topic.service';
-import { FileUploadService } from './file-upload/file-upload.service';
-import { FileUploadController } from './file-upload/file-upload.controller';
+import { FileService } from './file/file.service';
+import { FileController } from './file/file.controller';
+import { MulterModule } from '@nestjs/platform-express';
 
 type Network = { [key: string]: string | AccountId };
 export interface HederaConfig {
@@ -18,18 +19,25 @@ export interface HederaConfig {
 }
 
 @Module({
+  imports: [
+    MulterModule.register({
+      limits: {
+        fileSize: 1024 * 1024 // 1MB limit
+      }
+    })
+  ],
   controllers: [
     HederaController,
     HederaHealthController,
     TopicController,
-    FileUploadController,
+    FileController,
   ],
   providers: [
     HederaService,
     TopicService,
     HealthcheckService,
     HederaSecurityProvider,
-    FileUploadService,
+    FileService,
   ],
   exports: [HederaService],
 })
