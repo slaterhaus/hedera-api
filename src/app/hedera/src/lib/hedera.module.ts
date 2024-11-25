@@ -10,6 +10,7 @@ import { TopicService } from './topic/topic.service';
 import { FileService } from './file/file.service';
 import { FileController } from './file/file.controller';
 import { MulterModule } from '@nestjs/platform-express';
+import { TokensService } from './token/token.service';
 
 type Network = { [key: string]: string | AccountId };
 export interface HederaConfig {
@@ -38,6 +39,7 @@ export interface HederaConfig {
     HealthcheckService,
     HederaSecurityProvider,
     FileService,
+    TokensService,
   ],
   exports: [HederaService],
 })

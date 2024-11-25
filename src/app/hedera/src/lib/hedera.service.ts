@@ -29,4 +29,8 @@ export class HederaService {
   async getClient() {
     return this.client;
   }
+  async executeTransaction<T>(transaction: T) {
+    const execution = await (transaction as any).execute(this.client);
+    return execution.getReceipt(this.client);
+  }
 }
