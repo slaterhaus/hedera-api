@@ -1,3 +1,5 @@
+// TODO actual storage solution for dealing with different sets of tokens
+
 import { Inject, Injectable } from '@nestjs/common';
 
 import {
@@ -17,7 +19,6 @@ import { HederaService } from '@hedera-api/hedera';
 
 @Injectable()
 export class TokensService {
-  // TODO actual storage solution, maybe topic?
   private tokenStorage: Map<string, PropertyToken> = new Map();
 
   constructor(
