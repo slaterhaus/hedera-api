@@ -14,7 +14,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hedera-api/hedera": ["src/app/hedera/src/index.ts"]
+      "@hedera-api/hedera": ["src/app/hedera/src/index.ts"],
+      "@hedera-api/trading-view": ["src/app/trading-view/src/index.ts"]
     },
     "esModuleInterop": true
   },
