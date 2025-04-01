@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Payload, TradingViewService } from './trading-view.service';
 
 @Controller('trading-view')
@@ -9,5 +9,9 @@ export class TradingViewController {
   handleWebhook(@Body() payload: Payload): any {
     this.tradingViewService.handleWebook(payload);
     return payload;
+  }
+  @Get()
+  health() {
+    return 200;
   }
 }
