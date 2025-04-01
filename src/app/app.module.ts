@@ -3,7 +3,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HederaModule } from '@hedera-api/hedera';
-import { TradingViewModule } from './trading-view/trading-view.module';
+import { TradingViewModule } from '@trading-view';
+
 
 @Module({
   imports: [
